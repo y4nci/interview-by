@@ -1,0 +1,12 @@
+{
+  "name": "supabase-seeds",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Seed scripts for the interview system",
+  "scripts": {
+    "seed": "node seed-users.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.46.1"
+  }
+}
