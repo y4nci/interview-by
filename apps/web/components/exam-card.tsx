@@ -1,4 +1,4 @@
-import type { Exam } from "@/lib/mock-data";
+import type { Exam } from "@/lib/types";
 import { Button } from "@workspace/ui/components/button";
 import Link from "next/link";
 

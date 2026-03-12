@@ -1,11 +1,14 @@
+import { orpc } from '@/utils/orpc/server';
 import { Button } from "@workspace/ui/components/button";
 import Link from "next/link";
+
 interface CourseCardProps {
-  // TODO: Fix this type
-  course: any;
+  courseId: string;
 }
 
-export function CourseCard({ course }: CourseCardProps) {
+export async function CourseCard({ courseId }: CourseCardProps) {
+  const course = await orpc.getCourseById.call(courseId);
+
   return (
     <div className="border rounded-lg p-6 space-y-4 hover:shadow-md transition-shadow">
       <div>

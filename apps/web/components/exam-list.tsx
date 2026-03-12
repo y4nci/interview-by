@@ -1,12 +1,12 @@
-import { mockExams } from "@/lib/mock-data";
+import { orpc } from '@/utils/orpc/server';
 import { ExamCard } from "./exam-card";
 
 interface ExamListProps {
   courseId: string;
 }
 
-export function ExamList({ courseId }: ExamListProps) {
-  const exams = mockExams[courseId as keyof typeof mockExams] || [];
+export async function ExamList({ courseId }: ExamListProps) {
+  const exams = await orpc.getExamsByCourseId.call(courseId);
 
   if (exams.length === 0) {
     return (

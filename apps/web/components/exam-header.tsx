@@ -1,16 +1,12 @@
-import { mockExams } from "@/lib/mock-data";
+import { orpc } from '@/utils/orpc/server';
 
 interface ExamHeaderProps {
   examId: string;
 }
 
-export function ExamHeader({ examId }: ExamHeaderProps) {
+export async function ExamHeader({ examId }: ExamHeaderProps) {
   // Find exam across all courses
-  let exam = null;
-  for (const courseExams of Object.values(mockExams)) {
-    exam = courseExams.find((e) => e.id === examId);
-    if (exam) break;
-  }
+  const exam = await orpc.getExamById.call(examId);
 
   if (!exam) {
     return (

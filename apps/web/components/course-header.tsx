@@ -1,11 +1,11 @@
-import { mockCourses } from "@/lib/mock-data";
+import { orpc } from '@/utils/orpc/server';
 
 interface CourseHeaderProps {
   courseId: string;
 }
 
-export function CourseHeader({ courseId }: CourseHeaderProps) {
-  const course = mockCourses.find((c) => c.id === courseId);
+export async function CourseHeader({ courseId }: CourseHeaderProps) {
+  const course = await orpc.getCourseById.call(courseId);
 
   if (!course) {
     return (

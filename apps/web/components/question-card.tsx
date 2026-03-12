@@ -1,6 +1,6 @@
 "use client";
 
-import type { Question } from "@/lib/mock-data";
+import type { Question } from "@/lib/types";
 import { Button } from "@workspace/ui/components/button";
 import { useState } from "react";
 
@@ -33,8 +33,8 @@ export function QuestionCard({ question }: QuestionCardProps) {
   return (
     <div className="border rounded-lg p-6 space-y-4">
       <div>
-        <h3 className="text-lg font-semibold mb-2">Question {question.orderIndex}</h3>
-        <p className="text-gray-700">{question.questionText}</p>
+        <h3 className="text-lg font-semibold mb-2">Question {question.order_index}</h3>
+        <p className="text-gray-700">{question.question_text}</p>
       </div>
 
       {!submission ? (
