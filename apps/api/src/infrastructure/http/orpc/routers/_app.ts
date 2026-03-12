@@ -72,6 +72,24 @@ const getExamsByCourseId = os.handler(async ({ input }): Promise<Exam[]> => {
   return exams || [];
 });
 
+const getExamById = os.handler(async ({ input }): Promise<Exam> => {
+  const examId = input as string;
+
+  const supabase = createClientWithCredentials();
+
+  const { data: exam, error } = await supabase
+    .from("exams")
+    .select("*")
+    .eq("id", examId)
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return exam;
+});
+
 const getQuestionsByExamId = os.handler(async ({ input }): Promise<Question[]> => {
   const examId = input as string;
 
@@ -93,6 +111,7 @@ export const appRouter = os.router({
   getCourseList,
   getCourseById,
   getExamsByCourseId,
+  getExamById,
   getQuestionsByExamId,
 });
 
